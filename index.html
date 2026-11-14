@@ -4,365 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decoblox</title>
-    <!-- Tailwind CSS for responsive layout utilities -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 2019 Roblox Typography (Source Sans Pro / HCo Gotham fallback) -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* =====================================================================
-           2019 ROBLOX DESIGN TOKENS & TYPOGRAPHY
-           ===================================================================== */
-        :root {
-            --rbx-2019-blue: #00A2FF;
-            --rbx-2019-blue-hover: #008CE0;
-            --rbx-2019-blue-active: #0077C2;
-            --rbx-2019-green: #00B06F;
-            --rbx-2019-green-hover: #009E63;
-            --rbx-2019-green-active: #008A56;
-            --rbx-card-bg: rgba(235, 237, 239, 0.92);
-            --rbx-border: #B8B8B8;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-color: #162238;
-        }
-
-        /* =====================================================================
-           JAILBREAK PRISON ESCAPE FULL-SCREEN BACKGROUND & VIGNETTE OVERLAY
-           ===================================================================== */
-        .wallpaper-viewport {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            background-color: #162238;
-            background-image:
-                radial-gradient(circle at 50% 42%, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.56) 100%),
-                url('background.jpg'),
-                linear-gradient(180deg, #1E3A6E 0%, #5B7BA6 55%, #C98B6B 72%, #3D5229 73%, #243318 100%);
-            background-size: cover, cover, cover;
-            background-position: center center, center center, center center;
-            background-repeat: no-repeat, no-repeat, no-repeat;
-            pointer-events: none;
-        }
-
-        /* =====================================================================
-           2019 ROBLOX WELCOME MODAL OVERLAY
-           ===================================================================== */
-        .modal-2019-backdrop {
-            background-color: rgba(0, 0, 0, 0.65);
-            transition: opacity 0.2s ease;
-        }
-
-        .modal-2019-card {
-            background-color: #FFFFFF;
-            border-radius: 3px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.42);
-            border: 1px solid #D8D8D8;
-        }
-
-        .btn-2019-primary {
-            background-color: var(--rbx-2019-blue);
-            border: 1px solid var(--rbx-2019-blue);
-            color: #FFFFFF;
-            border-radius: 3px;
-            font-weight: 600;
-            transition: background-color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .btn-2019-primary:hover {
-            background-color: var(--rbx-2019-blue-hover);
-            border-color: var(--rbx-2019-blue-hover);
-        }
-
-        .btn-2019-primary:active {
-            background-color: var(--rbx-2019-blue-active);
-            border-color: var(--rbx-2019-blue-active);
-        }
-
-        /* =====================================================================
-           TOP-RIGHT WHITE "LOG IN" / "SIGN UP" BUTTON (MATCHING SCREENSHOT)
-           ===================================================================== */
-        .btn-top-right-switch {
-            background-color: #FFFFFF;
-            color: #191B1D;
-            border: 1px solid #D4D4D4;
-            border-radius: 3px;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 6px 28px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
-            transition: background-color 0.15s ease, transform 0.1s ease;
-        }
-
-        .btn-top-right-switch:hover {
-            background-color: #F2F4F5;
-        }
-
-        .btn-top-right-switch:active {
-            transform: translateY(1px);
-        }
-
-        /* =====================================================================
-           2019 FROSTED SIGN UP & SIGN IN CARD (MATCHING SCREENSHOT PROPORTIONS)
-           ===================================================================== */
-        .auth-card-2019 {
-            background: var(--rbx-card-bg);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: 3px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-            width: 100%;
-            max-width: 420px;
-            padding: 26px 24px 24px;
-        }
-
-        /* Connected 3-part Birthday Bar */
-        .birthday-group {
-            display: grid;
-            grid-template-columns: 1.25fr 0.9fr 1fr;
-            background-color: #FFFFFF;
-            border: 1px solid var(--rbx-border);
-            border-radius: 3px;
-            height: 38px;
-            overflow: hidden;
-        }
-
-        .birthday-select-wrap {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .birthday-select-wrap:not(:last-child) {
-            border-right: 1px solid #D4D4D4;
-        }
-
-        .birthday-select {
-            width: 100%;
-            height: 100%;
-            appearance: none;
-            -webkit-appearance: none;
-            background: transparent;
-            border: none;
-            padding: 0 24px 0 10px;
-            font-size: 14px;
-            color: #191B1D;
-            cursor: pointer;
-        }
-
-        .birthday-select:focus {
-            outline: none;
-            background-color: #F9FAFB;
-        }
-
-        .birthday-chevron {
-            position: absolute;
-            right: 8px;
-            pointer-events: none;
-            color: #191B1D;
-        }
-
-        /* 2019 Crisp White Text Inputs */
-        .input-2019 {
-            width: 100%;
-            height: 38px;
-            padding: 0 12px;
-            font-size: 15px;
-            color: #191B1D;
-            background-color: #FFFFFF;
-            border: 1px solid var(--rbx-border);
-            border-radius: 3px;
-            transition: border-color 0.15s ease;
-        }
-
-        .input-2019::placeholder {
-            color: #9E9E9E;
-        }
-
-        .input-2019:focus {
-            outline: none;
-            border-color: var(--rbx-2019-blue);
-        }
-
-        /* Connected 2-part Gender Bar (FEMALE | MALE) */
-        .gender-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background-color: #FFFFFF;
-            border: 1px solid var(--rbx-border);
-            border-radius: 3px;
-            height: 38px;
-            overflow: hidden;
-        }
-
-        .gender-btn {
-            background-color: #FFFFFF;
-            color: #191B1D;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .gender-btn:first-child {
-            border-right: 1px solid #D4D4D4;
-        }
-
-        .gender-btn:hover {
-            background-color: #F4F6F7;
-        }
-
-        .gender-btn.active {
-            background-color: #E6F6FF;
-            color: #0077C2;
-            box-shadow: inset 0 0 0 1.5px var(--rbx-2019-blue);
-        }
-
-        /* 2019 Bright Green Full-Width Sign Up / Log In Button */
-        .btn-2019-green {
-            width: 100%;
-            height: 40px;
-            background-color: var(--rbx-2019-green);
-            border: 1px solid var(--rbx-2019-green);
-            color: #FFFFFF;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .btn-2019-green:hover {
-            background-color: var(--rbx-2019-green-hover);
-            border-color: var(--rbx-2019-green-hover);
-        }
-
-        .btn-2019-green:active {
-            background-color: var(--rbx-2019-green-active);
-            border-color: var(--rbx-2019-green-active);
-        }
-
-        /* Custom Decoblox Logo Drop Shadow */
-        .decoblox-logo-shadow {
-            filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.65));
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen flex flex-col justify-between relative">
+<body>
 
-    <!-- =====================================================================
-         1. 2019 ROBLOX WELCOME DISCLAIMER POPUP (SHOWN ON PAGE LOAD)
-         ===================================================================== -->
-    <div id="welcomeModal" class="modal-2019-backdrop fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="welcomeModalTitle">
-        <div class="modal-2019-card w-full max-w-[400px] overflow-hidden">
-            <!-- Modal Header -->
-            <div class="px-5 pt-4 pb-3 border-b border-[#E3E3E3] text-center">
-                <h2 id="welcomeModalTitle" class="text-[20px] font-bold text-[#191B1D] tracking-tight">
-                    Welcome to Decoblox
-                </h2>
+    <div id="welcomeModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="welcomeModalTitle">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="welcomeModalTitle">Welcome to Decoblox</h2>
             </div>
-
-            <!-- Modal Body -->
-            <div class="px-6 py-5 text-center">
-                <p class="text-[15px] text-[#393B3D] leading-relaxed">
-                    Note: This revival is not associated with Roblox
-                </p>
+            <div class="modal-body">
+                <p>Note: This revival is not associated with Roblox</p>
             </div>
-
-            <!-- Modal Footer Action -->
-            <div class="px-5 pb-5 pt-1 flex justify-center">
-                <button
-                    id="understandBtn"
-                    type="button"
-                    class="btn-2019-primary w-full sm:w-auto sm:min-w-[160px] px-6 py-2 text-[15px] cursor-pointer"
-                >
-                    I understand
-                </button>
+            <div class="modal-footer">
+                <button id="understandBtn" type="button" class="btn-primary">I understand</button>
             </div>
         </div>
     </div>
 
-    <!-- =====================================================================
-         2. JAILBREAK PRISON ESCAPE FULL-SCREEN BACKGROUND
-         ===================================================================== -->
     <div class="wallpaper-viewport" aria-hidden="true"></div>
 
-    <!-- =====================================================================
-         3. TOP-RIGHT ACTION BAR ("Log In" / "Sign Up" BUTTON)
-         ===================================================================== -->
-    <header class="relative z-20 w-full flex justify-end items-center px-5 pt-4 sm:px-8 sm:pt-5">
-        <button id="topModeToggleBtn" type="button" class="btn-top-right-switch cursor-pointer">
-            Log In
-        </button>
+    <header class="top-bar">
+        <button id="topModeToggleBtn" type="button" class="btn-switch">Log In</button>
     </header>
 
-    <!-- =====================================================================
-         4. CENTERED LOGO + SIGN UP / SIGN IN CARD
-         ===================================================================== -->
-    <main class="relative z-20 flex-grow flex flex-col items-center justify-center px-4 py-6">
-
-        <!-- Custom Chunky White-with-Orange-Outline "Decoblox" Logo -->
-        <div class="mb-4 sm:mb-5 select-none flex justify-center">
-            <svg class="decoblox-logo-shadow w-[310px] sm:w-[390px] h-auto" viewBox="0 0 820 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decoblox Logo">
+    <main class="main-content">
+        <div class="logo-wrap">
+            <svg class="decoblox-logo" viewBox="0 0 820 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decoblox Logo">
                 <g stroke="#F56A00" stroke-width="18" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill" fill="#FFFFFF">
-                    <!-- Chunky 'D' -->
                     <path d="M 32,26 L 86,25 L 118,45 L 122,126 L 90,147 L 34,146 Z M 61,53 L 62,120 L 84,120 L 94,108 L 93,65 L 82,53 Z" fill-rule="evenodd" />
-
-                    <!-- Chunky 'e' -->
                     <path d="M 142,65 L 210,62 L 218,113 L 166,115 L 168,125 L 214,123 L 212,145 L 146,147 L 134,127 Z M 165,83 L 166,96 L 193,95 L 191,82 Z" fill-rule="evenodd" />
-
-                    <!-- Chunky 'c' -->
                     <path d="M 240,64 L 304,61 L 306,87 L 263,89 L 264,121 L 307,119 L 309,145 L 243,147 L 231,126 L 230,85 Z" />
-
-                    <!-- Chunky geometric tilted 'o' with square counter (classic Roblox stud vibe) -->
                     <path d="M 328,67 L 390,61 L 405,138 L 341,145 L 319,123 Z M 350,90 L 352,119 L 376,117 L 372,88 Z" fill-rule="evenodd" />
-
-                    <!-- Chunky 'b' -->
                     <path d="M 421,24 L 449,23 L 450,65 C 460,60 473,59 486,63 L 501,81 L 501,128 L 484,146 L 423,146 Z M 451,87 L 451,121 L 473,121 L 474,87 Z" fill-rule="evenodd" />
-
-                    <!-- Chunky 'l' -->
                     <path d="M 517,24 L 546,23 L 548,146 L 519,146 Z" />
-
-                    <!-- Chunky geometric tilted 'o' -->
                     <path d="M 571,66 L 633,62 L 645,139 L 581,145 L 561,122 Z M 592,89 L 593,118 L 617,116 L 614,88 Z" fill-rule="evenodd" />
-
-                    <!-- Chunky tilted 'x' -->
                     <path d="M 660,76 L 685,61 L 707,85 L 734,56 L 761,72 L 729,104 L 764,133 L 739,150 L 708,124 L 681,150 L 656,132 L 687,103 Z" />
                 </g>
             </svg>
         </div>
 
-        <!-- =================================================================
-             VIEW A: 2019 SIGN UP CARD (MATCHING SCREENSHOT PIXEL-FOR-PIXEL)
-             ================================================================= -->
-        <section id="signUpCard" class="auth-card-2019" aria-labelledby="signUpTitle">
-            <h1 id="signUpTitle" class="text-[17px] sm:text-[18px] font-extrabold text-[#191919] text-center tracking-tight uppercase mb-4">
-                SIGN UP AND START HAVING FUN!
-            </h1>
+        <section id="signUpCard" class="auth-card" aria-labelledby="signUpTitle">
+            <h1 id="signUpTitle" class="card-title">SIGN UP AND START HAVING FUN!</h1>
+            <div id="signUpFeedback" class="status-box hidden" role="alert"></div>
 
-            <!-- Inline Validation / Status Message -->
-            <div id="signUpFeedback" class="hidden mb-3.5 px-3 py-2 rounded-[3px] text-[13px] font-semibold leading-snug" role="alert"></div>
-
-            <form id="decobloxSignUpForm" method="POST" action="" novalidate class="space-y-3.5">
-                <!-- Birthday Section -->
-                <div>
-                    <label class="block text-[14px] font-semibold text-[#191B1D] mb-1">
-                        Birthday
-                    </label>
+            <form id="decobloxSignUpForm" method="POST" action="" novalidate>
+                <div class="form-group">
+                    <label class="field-label">Birthday</label>
                     <div class="birthday-group">
-                        <!-- Month -->
                         <div class="birthday-select-wrap">
                             <select id="birthMonth" name="birth_month" aria-label="Birth Month" class="birthday-select">
                                 <option value="">Month</option>
@@ -379,368 +69,96 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
-                            <svg class="birthday-chevron w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <svg class="birthday-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
                                 <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-
-                        <!-- Day -->
                         <div class="birthday-select-wrap">
                             <select id="birthDay" name="birth_day" aria-label="Birth Day" class="birthday-select">
                                 <option value="">Day</option>
                             </select>
-                            <svg class="birthday-chevron w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <svg class="birthday-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
                                 <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-
-                        <!-- Year -->
                         <div class="birthday-select-wrap">
                             <select id="birthYear" name="birth_year" aria-label="Birth Year" class="birthday-select">
                                 <option value="">Year</option>
                             </select>
-                            <svg class="birthday-chevron w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <svg class="birthday-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
                                 <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- Username Field + Helper Subtext -->
-                <div>
+                <div class="form-group">
                     <label for="signUpUsername" class="sr-only">Username</label>
-                    <input
-                        id="signUpUsername"
-                        name="username"
-                        type="text"
-                        autocomplete="username"
-                        placeholder="Username"
-                        class="input-2019"
-                    >
-                    <p class="mt-1 text-[11.5px] text-[#606162]">
-                        Don't use your real name
-                    </p>
+                    <input id="signUpUsername" name="username" type="text" autocomplete="username" placeholder="Username" class="input-field">
+                    <p class="helper-text">Don't use your real name</p>
                 </div>
 
-                <!-- Password Field -->
-                <div>
+                <div class="form-group">
                     <label for="signUpPassword" class="sr-only">Password</label>
-                    <input
-                        id="signUpPassword"
-                        name="password"
-                        type="password"
-                        autocomplete="new-password"
-                        placeholder="Password"
-                        class="input-2019"
-                    >
+                    <input id="signUpPassword" name="password" type="password" autocomplete="new-password" placeholder="Password" class="input-field">
                 </div>
 
-                <!-- Gender Selector (FEMALE | MALE) -->
-                <div>
-                    <label class="block text-[14px] font-semibold text-[#191B1D] mb-1">
-                        Gender
-                    </label>
+                <div class="form-group">
+                    <label class="field-label">Gender</label>
                     <input type="hidden" id="selectedGender" name="gender" value="">
                     <div class="gender-group" role="group" aria-label="Gender">
-                        <button type="button" id="genderFemaleBtn" data-gender="female" class="gender-btn">
-                            FEMALE
-                        </button>
-                        <button type="button" id="genderMaleBtn" data-gender="male" class="gender-btn">
-                            MALE
-                        </button>
+                        <button type="button" id="genderFemaleBtn" class="gender-btn">FEMALE</button>
+                        <button type="button" id="genderMaleBtn" class="gender-btn">MALE</button>
                     </div>
                 </div>
 
-                <!-- Terms of Use & Privacy Policy -->
-                <p class="text-[12px] text-[#606162] leading-snug pt-0.5">
+                <p class="terms-text">
                     By clicking Sign Up, you are agreeing to the
-                    <a href="#terms" onclick="showCardStatus('signUpFeedback', 'Decoblox Terms of Use: Be respectful and follow community rules.', 'info'); return false;" class="text-[#00A2FF] hover:underline">Terms of Use</a>
+                    <a href="#terms" onclick="showCardStatus('signUpFeedback', 'Decoblox Terms of Use: Be respectful and follow community rules.', 'info'); return false;" class="link-blue">Terms of Use</a>
                     and acknowledging the
-                    <a href="#privacy" onclick="showCardStatus('signUpFeedback', 'Decoblox Privacy Policy: Never share your real password.', 'info'); return false;" class="text-[#00A2FF] hover:underline">Privacy Policy</a>
+                    <a href="#privacy" onclick="showCardStatus('signUpFeedback', 'Decoblox Privacy Policy: Never share your real password.', 'info'); return false;" class="link-blue">Privacy Policy</a>
                 </p>
 
-                <!-- Bright Green Sign Up Button -->
-                <div class="pt-0.5">
-                    <button type="submit" class="btn-2019-green">
-                        Sign Up
-                    </button>
-                </div>
+                <button type="submit" class="btn-green">Sign Up</button>
             </form>
         </section>
 
-        <!-- =================================================================
-             VIEW B: 2019 SIGN IN CARD (TOGGLED VIA TOP-RIGHT "LOG IN" BUTTON)
-             ================================================================= -->
-        <section id="signInCard" class="auth-card-2019 hidden" aria-labelledby="signInTitle">
-            <h1 id="signInTitle" class="text-[17px] sm:text-[18px] font-extrabold text-[#191919] text-center tracking-tight uppercase mb-4">
-                LOGIN TO DECOBLOX
-            </h1>
+        <section id="signInCard" class="auth-card hidden" aria-labelledby="signInTitle">
+            <h1 id="signInTitle" class="card-title">LOGIN TO DECOBLOX</h1>
+            <div id="signInFeedback" class="status-box hidden" role="alert"></div>
 
-            <!-- Inline Validation / Status Message -->
-            <div id="signInFeedback" class="hidden mb-3.5 px-3 py-2 rounded-[3px] text-[13px] font-semibold leading-snug" role="alert"></div>
-
-            <form id="decobloxSignInForm" method="POST" action="" novalidate class="space-y-3.5">
-                <div>
+            <form id="decobloxSignInForm" method="POST" action="" novalidate>
+                <div class="form-group">
                     <label for="signInUsername" class="sr-only">Username</label>
-                    <input
-                        id="signInUsername"
-                        name="username"
-                        type="text"
-                        autocomplete="username"
-                        placeholder="Username/Email/Phone"
-                        class="input-2019"
-                    >
+                    <input id="signInUsername" name="username" type="text" autocomplete="username" placeholder="Username/Email/Phone" class="input-field">
                 </div>
 
-                <div>
+                <div class="form-group">
                     <label for="signInPassword" class="sr-only">Password</label>
-                    <input
-                        id="signInPassword"
-                        name="password"
-                        type="password"
-                        autocomplete="current-password"
-                        placeholder="Password"
-                        class="input-2019"
-                    >
+                    <input id="signInPassword" name="password" type="password" autocomplete="current-password" placeholder="Password" class="input-field">
                 </div>
 
-                <div class="pt-1">
-                    <button type="submit" class="btn-2019-green">
-                        Log In
-                    </button>
-                </div>
+                <button type="submit" class="btn-green">Log In</button>
             </form>
 
-            <div class="mt-4 text-center space-y-2">
+            <div class="login-links">
                 <div>
-                    <a href="#forgot" onclick="showCardStatus('signInFeedback', 'Contact a Decoblox staff member on Discord to recover your account.', 'info'); return false;" class="text-[13px] font-semibold text-[#00A2FF] hover:underline">
+                    <a href="#forgot" onclick="showCardStatus('signInFeedback', 'Contact a Decoblox staff member on Discord to recover your account.', 'info'); return false;" class="link-blue">
                         Forgot Password or Username?
                     </a>
                 </div>
-                <div class="border-t border-[#D8D8D8] pt-3 text-[13px] text-[#393B3D]">
+                <div class="login-divider">
                     Don't have an account?
-                    <button type="button" id="switchToSignUpLink" class="font-bold text-[#00A2FF] hover:underline ml-1 cursor-pointer bg-transparent border-0 p-0">
-                        Sign Up
-                    </button>
+                    <button type="button" id="switchToSignUpLink" class="link-blue">Sign Up</button>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- =====================================================================
-         5. COMPACT TRANSLUCENT FOOTER
-         ===================================================================== -->
-    <footer class="relative z-20 w-full py-3.5 px-4 text-center">
-        <p class="text-[12px] text-white/75 drop-shadow">
-            &copy; 2026 Decoblox &bull; Note: This revival is not associated with Roblox.
-        </p>
+    <footer class="site-footer">
+        <p>&copy; 2026 Decoblox &bull; Note: This revival is not associated with Roblox, Made by Palermo and Cristian</p>
     </footer>
 
-    <!-- =====================================================================
-         INTERACTIVE LOGIC: MODAL, BIRTHDAY OPTIONS, GENDER & VIEW SWITCHER
-         ===================================================================== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Populate Birthday Day (1-31) & Year (2026 down to 1920) dropdowns
-            const birthDay = document.getElementById('birthDay');
-            const birthYear = document.getElementById('birthYear');
-
-            if (birthDay) {
-                for (let d = 1; d <= 31; d++) {
-                    const opt = document.createElement('option');
-                    opt.value = d;
-                    opt.textContent = d;
-                    birthDay.appendChild(opt);
-                }
-            }
-
-            if (birthYear) {
-                const currentYear = 2026;
-                for (let y = currentYear; y >= 1920; y--) {
-                    const opt = document.createElement('option');
-                    opt.value = y;
-                    opt.textContent = y;
-                    birthYear.appendChild(opt);
-                }
-            }
-
-            // 2. Welcome Disclaimer Popup ("I understand" button)
-            const welcomeModal = document.getElementById('welcomeModal');
-            const understandBtn = document.getElementById('understandBtn');
-            const signUpUsername = document.getElementById('signUpUsername');
-
-            if (understandBtn && welcomeModal) {
-                understandBtn.focus();
-                understandBtn.addEventListener('click', () => {
-                    welcomeModal.style.opacity = '0';
-                    setTimeout(() => {
-                        welcomeModal.style.display = 'none';
-                        if (signUpUsername) signUpUsername.focus();
-                    }, 200);
-                });
-            }
-
-            // 3. Gender Toggle Buttons (FEMALE | MALE)
-            const genderFemaleBtn = document.getElementById('genderFemaleBtn');
-            const genderMaleBtn = document.getElementById('genderMaleBtn');
-            const selectedGenderInput = document.getElementById('selectedGender');
-
-            function setGender(gender) {
-                selectedGenderInput.value = gender;
-                genderFemaleBtn.classList.toggle('active', gender === 'female');
-                genderMaleBtn.classList.toggle('active', gender === 'male');
-            }
-
-            if (genderFemaleBtn && genderMaleBtn) {
-                genderFemaleBtn.addEventListener('click', () => setGender('female'));
-                genderMaleBtn.addEventListener('click', () => setGender('male'));
-            }
-
-            // 4. Toggle between Sign Up and Sign In Cards
-            const signUpCard = document.getElementById('signUpCard');
-            const signInCard = document.getElementById('signInCard');
-            const topModeToggleBtn = document.getElementById('topModeToggleBtn');
-            const switchToSignUpLink = document.getElementById('switchToSignUpLink');
-            let isSignUpView = true;
-
-            function setAuthView(showSignUp) {
-                isSignUpView = showSignUp;
-                if (showSignUp) {
-                    signUpCard.classList.remove('hidden');
-                    signInCard.classList.add('hidden');
-                    topModeToggleBtn.textContent = 'Log In';
-                } else {
-                    signUpCard.classList.add('hidden');
-                    signInCard.classList.remove('hidden');
-                    topModeToggleBtn.textContent = 'Sign Up';
-                }
-            }
-
-            if (topModeToggleBtn) {
-                topModeToggleBtn.addEventListener('click', () => {
-                    setAuthView(!isSignUpView);
-                });
-            }
-
-            if (switchToSignUpLink) {
-                switchToSignUpLink.addEventListener('click', () => {
-                    setAuthView(true);
-                });
-            }
-
-            // 5. Client-Side Validation & Account Storage for Sign Up Form
-            const signUpForm = document.getElementById('decobloxSignUpForm');
-            if (signUpForm) {
-                signUpForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const month = document.getElementById('birthMonth').value;
-                    const day = document.getElementById('birthDay').value;
-                    const year = document.getElementById('birthYear').value;
-                    const username = document.getElementById('signUpUsername').value.trim();
-                    const password = document.getElementById('signUpPassword').value;
-                    const gender = document.getElementById('selectedGender').value;
-
-                    if (!month || !day || !year) {
-                        showCardStatus('signUpFeedback', 'Please select your full birthday.', 'error');
-                        return;
-                    }
-                    if (username.length < 3 || username.length > 20) {
-                        showCardStatus('signUpFeedback', 'Username must be between 3 and 20 characters.', 'error');
-                        return;
-                    }
-                    if (password.length < 6) {
-                        showCardStatus('signUpFeedback', 'Password must be at least 6 characters long.', 'error');
-                        return;
-                    }
-
-                    // Persist account in localStorage across decoblox.fun pages
-                    try {
-                        const accounts = JSON.parse(localStorage.getItem('decoblox_accounts') || '{}');
-                        const accountData = {
-                            username: username,
-                            password: password,
-                            birthday: `${month}/${day}/${year}`,
-                            gender: gender || 'unspecified',
-                            createdAt: new Date().toISOString()
-                        };
-                        accounts[username.toLowerCase()] = accountData;
-                        localStorage.setItem('decoblox_accounts', JSON.stringify(accounts));
-                        localStorage.setItem('decoblox_current_user', JSON.stringify(accountData));
-                    } catch (storageErr) {
-                        console.warn('LocalStorage unavailable:', storageErr);
-                    }
-
-                    showCardStatus('signUpFeedback', 'Account "' + username + '" validated! Redirecting to Decoblox Home...', 'success');
-
-                    setTimeout(() => {
-                        window.location.href = 'https://decoblox.fun/home';
-                    }, 1200);
-                });
-            }
-
-            // 6. Client-Side Validation & Account Verification for Sign In Form
-            const signInForm = document.getElementById('decobloxSignInForm');
-            if (signInForm) {
-                signInForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const username = document.getElementById('signInUsername').value.trim();
-                    const password = document.getElementById('signInPassword').value;
-
-                    if (!username || !password) {
-                        showCardStatus('signInFeedback', 'Username and password are required.', 'error');
-                        return;
-                    }
-
-                    // Check saved localStorage accounts or allow valid credentials
-                    try {
-                        const accounts = JSON.parse(localStorage.getItem('decoblox_accounts') || '{}');
-                        const savedAccount = accounts[username.toLowerCase()];
-
-                        if (savedAccount && savedAccount.password !== password) {
-                            showCardStatus('signInFeedback', 'Incorrect password for "' + savedAccount.username + '".', 'error');
-                            return;
-                        }
-
-                        const activeSession = savedAccount || {
-                            username: username,
-                            loggedInAt: new Date().toISOString()
-                        };
-                        localStorage.setItem('decoblox_current_user', JSON.stringify(activeSession));
-                    } catch (storageErr) {
-                        console.warn('LocalStorage unavailable:', storageErr);
-                    }
-
-                    showCardStatus('signInFeedback', 'Logging in as "' + username + '"... Redirecting to Decoblox Home...', 'success');
-
-                    setTimeout(() => {
-                        window.location.href = 'https://decoblox.fun/home';
-                    }, 1200);
-                });
-            }
-        });
-
-        // Helper for displaying 2019 inline form alerts
-        function showCardStatus(elementId, message, type) {
-            const box = document.getElementById(elementId);
-            if (!box) return;
-
-            box.textContent = message;
-            box.classList.remove(
-                'hidden',
-                'bg-[#FEE2E2]', 'text-[#B91C1C]', 'border', 'border-[#FCA5A5]',
-                'bg-[#E0F2FE]', 'text-[#0369A1]', 'border-[#7DD3FC]',
-                'bg-[#DCFCE7]', 'text-[#15803D]', 'border-[#86EFAC]'
-            );
-
-            if (type === 'error') {
-                box.classList.add('bg-[#FEE2E2]', 'text-[#B91C1C]', 'border', 'border-[#FCA5A5]');
-            } else if (type === 'success') {
-                box.classList.add('bg-[#DCFCE7]', 'text-[#15803D]', 'border', 'border-[#86EFAC]');
-            } else {
-                box.classList.add('bg-[#E0F2FE]', 'text-[#0369A1]', 'border', 'border-[#7DD3FC]');
-            }
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>

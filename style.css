@@ -1,0 +1,436 @@
+:root {
+    --rbx-blue: #00A2FF;
+    --rbx-blue-hover: #008CE0;
+    --rbx-blue-active: #0077C2;
+    --rbx-green: #00B06F;
+    --rbx-green-hover: #009E63;
+    --rbx-green-active: #008A56;
+    --rbx-card-bg: rgba(235, 237, 239, 0.92);
+    --rbx-border: #B8B8B8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow-x: hidden;
+    background-color: #162238;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.wallpaper-viewport {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-color: #162238;
+    background-image:
+        radial-gradient(circle at 50% 42%, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.56) 100%),
+        url('background.jpg'),
+        linear-gradient(180deg, #1E3A6E 0%, #5B7BA6 55%, #C98B6B 72%, #3D5229 73%, #243318 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+/* Modal di benvenuto */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.65);
+    transition: opacity 0.2s ease;
+}
+
+.modal-card {
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.42);
+    border: 1px solid #D8D8D8;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid #E3E3E3;
+    text-align: center;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #191B1D;
+}
+
+.modal-body {
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 15px;
+    color: #393B3D;
+    line-height: 1.5;
+}
+
+.modal-footer {
+    padding: 4px 20px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Barra superiore */
+.top-bar {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px 0;
+}
+
+.btn-switch {
+    background-color: #FFFFFF;
+    color: #191B1D;
+    border: 1px solid #D4D4D4;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 28px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+    transition: background-color 0.15s ease;
+}
+
+.btn-switch:hover {
+    background-color: #F2F4F5;
+}
+
+/* Contenitore centrale e Logo */
+.main-content {
+    position: relative;
+    z-index: 20;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+.logo-wrap {
+    margin-bottom: 20px;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+}
+
+.decoblox-logo {
+    width: 360px;
+    max-width: 90vw;
+    height: auto;
+    filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.65));
+}
+
+/* Card centrale (Sign Up / Log In / Error) */
+.auth-card {
+    background: var(--rbx-card-bg);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 3px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    width: 100%;
+    max-width: 420px;
+    padding: 26px 24px 24px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #191919;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #191B1D;
+    margin-bottom: 4px;
+}
+
+.helper-text {
+    margin-top: 4px;
+    font-size: 11.5px;
+    color: #606162;
+}
+
+.terms-text {
+    font-size: 12px;
+    color: #606162;
+    line-height: 1.4;
+    margin-bottom: 14px;
+}
+
+.link-blue {
+    color: var(--rbx-blue);
+    text-decoration: none;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+.link-blue:hover {
+    text-decoration: underline;
+}
+
+/* Selettore Compleanno */
+.birthday-group {
+    display: grid;
+    grid-template-columns: 1.25fr 0.9fr 1fr;
+    background-color: #FFFFFF;
+    border: 1px solid var(--rbx-border);
+    border-radius: 3px;
+    height: 38px;
+    overflow: hidden;
+}
+
+.birthday-select-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.birthday-select-wrap:not(:last-child) {
+    border-right: 1px solid #D4D4D4;
+}
+
+.birthday-select {
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 0 24px 0 10px;
+    font-size: 14px;
+    color: #191B1D;
+    cursor: pointer;
+}
+
+.birthday-select:focus {
+    outline: none;
+    background-color: #F9FAFB;
+}
+
+.birthday-chevron {
+    position: absolute;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    color: #191B1D;
+}
+
+/* Campi di testo */
+.input-field {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 15px;
+    color: #191B1D;
+    background-color: #FFFFFF;
+    border: 1px solid var(--rbx-border);
+    border-radius: 3px;
+    transition: border-color 0.15s ease;
+}
+
+.input-field::placeholder {
+    color: #9E9E9E;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--rbx-blue);
+}
+
+/* Selettore Genere */
+.gender-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #FFFFFF;
+    border: 1px solid var(--rbx-border);
+    border-radius: 3px;
+    height: 38px;
+    overflow: hidden;
+}
+
+.gender-btn {
+    background-color: #FFFFFF;
+    color: #191B1D;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.gender-btn:first-child {
+    border-right: 1px solid #D4D4D4;
+}
+
+.gender-btn:hover {
+    background-color: #F4F6F7;
+}
+
+.gender-btn.active {
+    background-color: #E6F6FF;
+    color: #0077C2;
+    box-shadow: inset 0 0 0 1.5px var(--rbx-blue);
+}
+
+/* Pulsanti principali */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--rbx-blue);
+    border: 1px solid var(--rbx-blue);
+    color: #FFFFFF;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--rbx-blue-hover);
+}
+
+.btn-green {
+    width: 100%;
+    height: 40px;
+    background-color: var(--rbx-green);
+    border: 1px solid var(--rbx-green);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-green:hover {
+    background-color: var(--rbx-green-hover);
+}
+
+.btn-discord {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #5865F2;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: background-color 0.15s ease;
+}
+
+.btn-discord:hover {
+    background-color: #4752C4;
+}
+
+.btn-full {
+    display: block;
+    width: 100%;
+}
+
+/* Messaggi di stato */
+.status-box {
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.status-error {
+    background-color: #FEE2E2;
+    color: #B91C1C;
+    border: 1px solid #FCA5A5;
+}
+
+.status-info {
+    background-color: #E0F2FE;
+    color: #0369A1;
+    border: 1px solid #7DD3FC;
+}
+
+.status-success {
+    background-color: #DCFCE7;
+    color: #15803D;
+    border: 1px solid #86EFAC;
+}
+
+/* Link extra sotto Login */
+.login-links {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #393B3D;
+}
+
+.login-divider {
+    border-top: 1px solid #D8D8D8;
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+/* Footer */
+.site-footer {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}

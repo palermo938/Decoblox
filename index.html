@@ -2,163 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decoblox</title>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>DECOBLOX</title>
 </head>
 <body>
-
-    <div id="welcomeModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="welcomeModalTitle">
-        <div class="modal-card">
-            <div class="modal-header">
-                <h2 id="welcomeModalTitle">Welcome to Decoblox</h2>
-            </div>
-            <div class="modal-body">
-                <p>Note: This revival is not associated with Roblox</p>
-            </div>
-            <div class="modal-footer">
-                <button id="understandBtn" type="button" class="btn-primary">I understand</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="wallpaper-viewport" aria-hidden="true"></div>
-
-    <header class="top-bar">
-        <button id="topModeToggleBtn" type="button" class="btn-switch">Log In</button>
-    </header>
-
-    <main class="main-content">
-        <div class="logo-wrap">
-            <svg class="decoblox-logo" viewBox="0 0 820 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decoblox Logo">
-                <g stroke="#F56A00" stroke-width="18" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill" fill="#FFFFFF">
-                    <path d="M 32,26 L 86,25 L 118,45 L 122,126 L 90,147 L 34,146 Z M 61,53 L 62,120 L 84,120 L 94,108 L 93,65 L 82,53 Z" fill-rule="evenodd" />
-                    <path d="M 142,65 L 210,62 L 218,113 L 166,115 L 168,125 L 214,123 L 212,145 L 146,147 L 134,127 Z M 165,83 L 166,96 L 193,95 L 191,82 Z" fill-rule="evenodd" />
-                    <path d="M 240,64 L 304,61 L 306,87 L 263,89 L 264,121 L 307,119 L 309,145 L 243,147 L 231,126 L 230,85 Z" />
-                    <path d="M 328,67 L 390,61 L 405,138 L 341,145 L 319,123 Z M 350,90 L 352,119 L 376,117 L 372,88 Z" fill-rule="evenodd" />
-                    <path d="M 421,24 L 449,23 L 450,65 C 460,60 473,59 486,63 L 501,81 L 501,128 L 484,146 L 423,146 Z M 451,87 L 451,121 L 473,121 L 474,87 Z" fill-rule="evenodd" />
-                    <path d="M 517,24 L 546,23 L 548,146 L 519,146 Z" />
-                    <path d="M 571,66 L 633,62 L 645,139 L 581,145 L 561,122 Z M 592,89 L 593,118 L 617,116 L 614,88 Z" fill-rule="evenodd" />
-                    <path d="M 660,76 L 685,61 L 707,85 L 734,56 L 761,72 L 729,104 L 764,133 L 739,150 L 708,124 L 681,150 L 656,132 L 687,103 Z" />
-                </g>
-            </svg>
-        </div>
-
-        <section id="signUpCard" class="auth-card" aria-labelledby="signUpTitle">
-            <h1 id="signUpTitle" class="card-title">SIGN UP AND START HAVING FUN!</h1>
-            <div id="signUpFeedback" class="status-box hidden" role="alert"></div>
-
-            <form id="decobloxSignUpForm" method="POST" action="" novalidate>
-                <div class="form-group">
-                    <label class="field-label">Birthday</label>
-                    <div class="birthday-group">
-                        <div class="birthday-select-wrap">
-                            <select id="birthMonth" name="birth_month" aria-label="Birth Month" class="birthday-select">
-                                <option value="">Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                            <svg class="birthday-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
-                                <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="birthday-select-wrap">
-                            <select id="birthDay" name="birth_day" aria-label="Birth Day" class="birthday-select">
-                                <option value="">Day</option>
-                            </select>
-                            <svg class="birthday-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
-                                <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="birthday-select-wrap">
-                            <select id="birthYear" name="birth_year" aria-label="Birth Year" class="birthday-select">
-                                <option value="">Year</option>
-                            </select>
-                            <svg class="birthday-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2">
-                                <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="signUpUsername" class="sr-only">Username</label>
-                    <input id="signUpUsername" name="username" type="text" autocomplete="username" placeholder="Username" class="input-field">
-                    <p class="helper-text">Don't use your real name</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="signUpPassword" class="sr-only">Password</label>
-                    <input id="signUpPassword" name="password" type="password" autocomplete="new-password" placeholder="Password" class="input-field">
-                </div>
-
-                <div class="form-group">
-                    <label class="field-label">Gender</label>
-                    <input type="hidden" id="selectedGender" name="gender" value="">
-                    <div class="gender-group" role="group" aria-label="Gender">
-                        <button type="button" id="genderFemaleBtn" class="gender-btn">FEMALE</button>
-                        <button type="button" id="genderMaleBtn" class="gender-btn">MALE</button>
-                    </div>
-                </div>
-
-                <p class="terms-text">
-                    By clicking Sign Up, you are agreeing to the
-                    <a href="#terms" onclick="showCardStatus('signUpFeedback', 'Decoblox Terms of Use: Be respectful and follow community rules.', 'info'); return false;" class="link-blue">Terms of Use</a>
-                    and acknowledging the
-                    <a href="#privacy" onclick="showCardStatus('signUpFeedback', 'Decoblox Privacy Policy: Never share your real password.', 'info'); return false;" class="link-blue">Privacy Policy</a>
-                </p>
-
-                <button type="submit" class="btn-green">Sign Up</button>
-            </form>
-        </section>
-
-        <section id="signInCard" class="auth-card hidden" aria-labelledby="signInTitle">
-            <h1 id="signInTitle" class="card-title">LOGIN TO DECOBLOX</h1>
-            <div id="signInFeedback" class="status-box hidden" role="alert"></div>
-
-            <form id="decobloxSignInForm" method="POST" action="" novalidate>
-                <div class="form-group">
-                    <label for="signInUsername" class="sr-only">Username</label>
-                    <input id="signInUsername" name="username" type="text" autocomplete="username" placeholder="Username/Email/Phone" class="input-field">
-                </div>
-
-                <div class="form-group">
-                    <label for="signInPassword" class="sr-only">Password</label>
-                    <input id="signInPassword" name="password" type="password" autocomplete="current-password" placeholder="Password" class="input-field">
-                </div>
-
-                <button type="submit" class="btn-green">Log In</button>
-            </form>
-
-            <div class="login-links">
-                <div>
-                    <a href="#forgot" onclick="showCardStatus('signInFeedback', 'Contact a Decoblox staff member on Discord to recover your account.', 'info'); return false;" class="link-blue">
-                        Forgot Password or Username?
-                    </a>
-                </div>
-                <div class="login-divider">
-                    Don't have an account?
-                    <button type="button" id="switchToSignUpLink" class="link-blue">Sign Up</button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Decoblox &bull; Note: This revival is not associated with Roblox, Made by Palermo and Cristian</p>
-    </footer>
-
-    <script src="app.js"></script>
+    <h1>DECOBLOX</h1>
+    <hr>
+    <p>Welcome to DECOBLOX.</p>
+    <ul>
+        <li><a href="downloads.html">Downloads</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="idk.html">idk</a></li>
+    </ul>
+    <hr>
+    <p><small>DECOBLOX - Not affiliated with ROBLOX CORPORATION.</small></p>
 </body>
 </html>

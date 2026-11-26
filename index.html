@@ -1,317 +1,312 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie8" ng-app="robloxApp"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html>
-<!--<![endif]-->
-<head data-machine-id="WEB1726">
-    <!-- MachineID: WEB1726 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decoblox</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,requiresActiveX=true" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="Decoblox" />
-<meta name="description" content="Decoblox is a platform that brings people together through play." />
-<meta name="keywords" content="free games, online games, building games, virtual worlds, free mmo, gaming cloud, physics engine" />
+    <link rel="icon" href="logo.png">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "HCo Gotham SSm", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
 
-<script type="application/ld+json">
-    {
-    "@context" : "http://schema.org",
-    "@type" : "Organization",
-    "name" : "Decoblox",
-    "url" : "https://decoblox.fun/",
-    "logo": "https://decoblox.fun/logo.png"
-    }
-</script>
-    <meta property="og:site_name" content="Decoblox" />
-    <meta property="og:title" content="Decoblox" />
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://decoblox.fun/" />
-    <meta property="og:description" content="Decoblox - Imagine, create, and play together across user-generated 3D worlds."/>
-    <meta property="og:image" content="https://decoblox.fun/logo.png" />
+        body {
+            background-color: #191b1d;
+            background-image: linear-gradient(rgba(25, 27, 29, 0.78), rgba(25, 27, 29, 0.88)),
+                              radial-gradient(circle at top, #2c3137 0%, #191b1d 70%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-<meta name="locale-data" 
-      data-language-code="en_us" 
-      data-language-name="English" />
-<meta name="device-meta"
-      data-device-type="computer"
-      data-is-in-app="false"
-      data-is-desktop="true"
-      data-is-phone="false"
-      data-is-tablet="false"
-      data-is-console="false"
-      data-is-android-app="false"
-      data-is-ios-app="false"
-      data-is-uwp-app="false"
-      data-is-xbox-app="false"
-      data-is-amazon-app="false"
-      data-is-win32-app="false"
-      data-is-studio="false"
-      data-is-game-client-browser="false"
-      data-is-ios-device="false"
-      data-is-android-device="false"
-      data-is-universal-app="false"
-      data-app-type="unknown"
-/>
-<meta name="environment-meta" data-is-testing-site="false" />
-<meta id="roblox-display-names" data-enabled="false"></meta>
-<meta name="page-meta" data-internal-page-name="Landing" />
+        /* Top Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+        }
 
-<script type="text/javascript">
-    var Roblox = Roblox || {};
-    Roblox.BundleVerifierConstants = {
-        isMetricsApiEnabled: false,
-        eventStreamUrl: "",
-        deviceType: "Computer",
-        cdnLoggingEnabled: false
-    };
-</script>
+        .nav-logo img {
+            height: 36px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
 
-<script type="text/javascript">
-    var Roblox = Roblox || {};
-    Roblox.BundleDetector = (function () {
-        return {
-            jsBundlesLoaded: {},
-            bundlesReported: {},
-            bundleDetected: function (bundleName) { this.jsBundlesLoaded[bundleName] = true; },
-            reportBundleError: function () {},
-            reportResourceError: function () {},
-            reportResourceLoaded: function () {},
-            verifyBundles: function () {},
-            setTiming: function () {}
-        };
-    })();
-</script>
-    
-<link href="logo.png" rel="icon" />
+        .btn-top-login {
+            background-color: #ffffff;
+            color: #191b1d;
+            border: none;
+            border-radius: 8px;
+            padding: 9px 22px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
 
-<link rel='stylesheet' data-bundlename='StyleGuide' href='https://css.rbxcdn.com/9157afd5cee40eb7b436a6945743afc5a4e11f242379b22371e6a508f06bcc2d.css' />
-<link rel='stylesheet' data-bundlename='Thumbnails' href='https://css.rbxcdn.com/9517d686dc47015c200496d77e2b18146ee37652d18e25ecf9e1ed230310ea13.css' />
-<link rel='stylesheet' data-bundlename='Navigation' href='https://css.rbxcdn.com/b4acdc29672aaf9dec2081fb12cfd9f1c40ecfef7a80915c9e2377bdd251c8bc.css' />
-<link rel='stylesheet' data-bundlename='Footer' href='https://css.rbxcdn.com/55b250e8473888792f885d898973a13692fb22157baf61aaffa62ce4545f3408.css' />
+        .btn-top-login:hover {
+            background-color: #e3e5e8;
+        }
 
-<link rel="canonical" href="https://decoblox.fun/" />
-<link rel='stylesheet' href='https://static.rbxcdn.com/css/page___c9e032a4e921419962d7000da9e16b0b_m.css/fetch' />
-<link rel='stylesheet' data-bundlename='Landing' href='https://css.rbxcdn.com/70601b02095c8799b44d63feeb4e88232fa2f447f595b9a27fbb2a1bd2fd6a99.css' />
-<link rel='stylesheet' data-bundlename='Captcha' href='https://css.rbxcdn.com/24a76e8ea70afb9462fad013faa3d22ff3e832e8327ddd764dafe328918bed90.css' />
-<link rel='stylesheet' data-bundlename='RobuxIcon' href='https://css.rbxcdn.com/2f599b9e9ca20ee3c155684adbf1cdcb7220bab681b55b4505123a0c34e81969.css' />
+        /* Main Center Container */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-<style>
-    .icon-logo,
-    .roblox-logo,
-    span.icon-logo {
-        background-image: url("logo.png") !important;
-        background-position: center center !important;
-        background-size: contain !important;
-        background-repeat: no-repeat !important;
-        width: 165px !important;
-        height: 36px !important;
-        display: inline-block !important;
-        filter: brightness(0) invert(1) !important;
-    }
+        .center-logo {
+            margin-bottom: 24px;
+            text-align: center;
+        }
 
-    .icon-logo-r,
-    span.icon-logo-r {
-        background-image: url("logo.png") !important;
-        background-position: center center !important;
-        background-size: contain !important;
-        background-repeat: no-repeat !important;
-        width: 45px !important;
-        height: 36px !important;
-        display: inline-block !important;
-        filter: brightness(0) invert(1) !important;
-    }
-</style>
+        .center-logo img {
+            height: 54px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
 
-<script type="text/javascript">
-    var Roblox = Roblox || {};
-    Roblox.EnvironmentUrls = Roblox.EnvironmentUrls || {};
-    Roblox.EnvironmentUrls = {"abtestingApiSite":"https://decoblox.fun","accountInformationApi":"https://decoblox.fun","accountSettingsApi":"https://decoblox.fun","adConfigurationApi":"https://decoblox.fun","adsApi":"https://decoblox.fun","apiGatewayUrl":"https://decoblox.fun","apiProxyUrl":"https://decoblox.fun","assetDeliveryApi":"https://decoblox.fun","authApi":"https://decoblox.fun","authAppSite":"https://decoblox.fun","avatarApi":"https://decoblox.fun","badgesApi":"https://decoblox.fun","billingApi":"https://decoblox.fun","captchaApi":"https://decoblox.fun","catalogApi":"https://decoblox.fun","chatApi":"https://decoblox.fun","contactsApi":"https://decoblox.fun","contentStoreApi":"https://decoblox.fun","developApi":"https://decoblox.fun","domain":"decoblox.fun","economyApi":"https://decoblox.fun","economycreatorstatsApi":"https://decoblox.fun","engagementPayoutsApi":"https://decoblox.fun","followingsApi":"https://decoblox.fun","friendsApi":"https://decoblox.fun","friendsAppSite":"https://decoblox.fun","gamesApi":"https://decoblox.fun","gameInternationalizationApi":"https://decoblox.fun","groupsApi":"https://decoblox.fun","inventoryApi":"https://decoblox.fun","itemConfigurationApi":"https://decoblox.fun","localeApi":"https://decoblox.fun","localizationTablesApi":"https://decoblox.fun","metricsApi":"https://decoblox.fun","midasApi":"https://decoblox.fun","notificationApi":"https://decoblox.fun","premiumFeaturesApi":"https://decoblox.fun","presenceApi":"https://decoblox.fun","publishApi":"https://decoblox.fun","screenTimeApi":"https://decoblox.fun","thumbnailsApi":"https://decoblox.fun","tradesApi":"https://decoblox.fun","translationRolesApi":"https://decoblox.fun","universalAppConfigurationApi":"https://decoblox.fun","usersApi":"https://decoblox.fun","voiceApi":"https://decoblox.fun","websiteUrl":"https://decoblox.fun","privateMessagesApi":"https://decoblox.fun","shareApi":"https://decoblox.fun","chatModerationApi":"https://decoblox.fun","userModerationApi":"https://decoblox.fun","groupsModerationApi":"https://decoblox.fun","twoStepVerificationApi":"https://decoblox.fun"};
-</script>
+        /* Auth Box (2020 Dark Card Style) */
+        .auth-card {
+            background-color: #232527;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 420px;
+            padding: 28px 28px 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+        }
 
-<script type="text/javascript">
-    var Roblox = Roblox || {};
-    Roblox.GaEventSettings = {
-        gaDFPPreRollEnabled: false,
-        gaLaunchAttemptAndLaunchSuccessEnabled: false,
-        gaPerformanceEventEnabled: false
-    };
-</script>
+        .auth-card h2 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 22px;
+            letter-spacing: 0.5px;
+        }
 
-<script data-monitor='true' data-bundlename='headerinit' type='text/javascript' src='https://js.rbxcdn.com/7bee61aedcbb4773d878992153fa64e0.js'></script>
-<script data-monitor='true' data-bundlename='BabelPolyfill' type='text/javascript' src='https://js.rbxcdn.com/70d454e5f01a8f000b60359d6fc49c1fedf238e9f900fb5c2060b65ce37d836d.js'></script>
-<script data-monitor='true' data-bundlename='Polyfill' type='text/javascript' src='https://js.rbxcdn.com/39ea830a13655eb78904b0becc6098abd25ede815347ccf1367c6cb9a8a52716.js'></script>
-<script data-monitor='true' data-bundlename='HeaderScripts' type='text/javascript' src='https://js.rbxcdn.com/db5218c3fbccfaa300942c9c11f581d29079dcf3d27e2b69c410f10ba3aff8d4.js'></script>
+        .form-group {
+            margin-bottom: 14px;
+        }
 
-<script type="text/javascript">
-if (typeof(Roblox) === "undefined") { Roblox = {}; }
-Roblox.Endpoints = Roblox.Endpoints || {};
-Roblox.Endpoints.Urls = Roblox.Endpoints.Urls || {};
-Roblox.Endpoints.Urls['/login/default.aspx'] = '/home.html';
-Roblox.Endpoints.Urls['/authentication/is-logged-in'] = '/home.html';
-Roblox.Endpoints.addCrossDomainOptionsToAllRequests = false;
-</script>
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #bdbebe;
+            margin-bottom: 6px;
+        }
 
-<script>
-    Roblox = Roblox || {};
-    Roblox.AbuseReportPVMeta = {
-        desktopEnabled: false,
-        phoneEnabled: false,
-        inAppEnabled: false
-    };
-</script>
+        .form-control {
+            width: 100%;
+            background-color: #191b1d;
+            border: 1px solid #393b3d;
+            border-radius: 6px;
+            padding: 11px 12px;
+            color: #ffffff;
+            font-size: 15px;
+            outline: none;
+        }
 
+        .form-control:focus {
+            border-color: #ffffff;
+        }
+
+        .birthday-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .birthday-row select {
+            flex: 1;
+            background-color: #191b1d;
+            border: 1px solid #393b3d;
+            border-radius: 6px;
+            padding: 10px 8px;
+            color: #bdbebe;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #00b06f;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.15s;
+        }
+
+        .btn-submit:hover {
+            background-color: #009960;
+        }
+
+        .btn-login-submit {
+            background-color: #ffffff;
+            color: #191b1d;
+        }
+
+        .btn-login-submit:hover {
+            background-color: #e3e5e8;
+        }
+
+        .switch-mode {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 14px;
+            color: #bdbebe;
+        }
+
+        .switch-mode a {
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .switch-mode a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #808285;
+            border-top: 1px solid #2b2d2f;
+        }
+
+        footer a {
+            color: #bdbebe;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
-<body id="rbx-body"
-      class="rbx-body gotham-font"
-      data-performance-relative-value="0.005"
-      data-internal-page-name="Landing"
-      data-send-event-percentage="0">
+<body>
 
-<div id="image-retry-data" data-image-retry-max-times="5" data-image-retry-timer="500" data-ga-logging-percent="0"></div>
-<div id="http-retry-data" data-http-retry-max-timeout="0" data-http-retry-base-timeout="0" data-http-retry-max-times="1"></div>
+    <header class="navbar">
+        <div class="nav-logo">
+            <img src="logo.png" alt="Decoblox">
+        </div>
+        <button type="button" class="btn-top-login" id="toggleHeaderBtn" onclick="toggleAuthMode()">Log In</button>
+    </header>
 
-<script type="text/javascript">
-    var Roblox = Roblox || {};
-    $(function () {
-        var funCaptcha = Roblox.FunCaptcha;
-        if (funCaptcha) {
-            var captchaTypes = [{"Type":"Signup","PublicKey":"A2A14B1D-1AF3-C791-9BBC-EE33CC7A0A6F","ApiUrl":"https://captcha.roblox.com/v1/funcaptcha/signup"},{"Type":"Login","PublicKey":"9F35E182-C93C-EBCC-A31D-CF8ED317B996","ApiUrl":"https://captcha.roblox.com/v1/funcaptcha/login/web"}];
-            funCaptcha.addCaptchaTypes(captchaTypes, true);
-            funCaptcha.setMaxRetriesOnTokenValidationFailure(0);
-            funCaptcha.setPerAppTypeLoggingEnabled(false);
-            funCaptcha.setRetryIntervalRange(500, 1500);
+    <main class="main-container">
+        <div class="center-logo">
+            <img src="logo.png" alt="Decoblox">
+        </div>
+
+        <!-- SIGN UP FORM -->
+        <div class="auth-card" id="signupCard">
+            <h2>SIGN UP AND START HAVING FUN!</h2>
+            <form id="signupForm" onsubmit="enterSite(event, 'signupUsername')">
+                <div class="form-group">
+                    <label>Birthday</label>
+                    <div class="birthday-row">
+                        <select><option>Month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+                        <select><option>Day</option><option>1</option><option>5</option><option>10</option><option>15</option><option>20</option><option>25</option></select>
+                        <select><option>Year</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option>2010</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" class="form-control" placeholder="Don't use your real name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="At least 8 characters" required>
+                </div>
+                <button type="submit" class="btn-submit">Sign Up</button>
+            </form>
+            <div class="switch-mode">
+                Already have an account? <a onclick="showLogin()">Log In</a>
+            </div>
+        </div>
+
+        <!-- LOG IN FORM -->
+        <div class="auth-card hidden" id="loginCard">
+            <h2>LOGIN TO DECOBLOX</h2>
+            <form id="loginForm" onsubmit="enterSite(event, 'loginUsername')">
+                <div class="form-group">
+                    <input type="text" id="loginUsername" class="form-control" placeholder="Username / Email / Phone" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-submit btn-login-submit">Log In</button>
+            </form>
+            <div class="switch-mode">
+                Don't have an account? <a onclick="showSignup()">Sign Up</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <a href="#">About Us</a>
+            <a href="#">Jobs</a>
+            <a href="#">Blog</a>
+            <a href="#">Parents</a>
+            <a href="#">Help</a>
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+        </div>
+        <p style="margin-top: 10px;">©2026 Decoblox. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showLogin() {
+            document.getElementById("signupCard").classList.add("hidden");
+            document.getElementById("loginCard").classList.remove("hidden");
+            document.getElementById("toggleHeaderBtn").textContent = "Sign Up";
         }
-    });
 
-    function reportFunCaptchaLoaded() {
-        if (Roblox.BundleDetector) {
-            Roblox.BundleDetector.reportResourceLoaded("funcaptcha");
+        function showSignup() {
+            document.getElementById("loginCard").classList.add("hidden");
+            document.getElementById("signupCard").classList.remove("hidden");
+            document.getElementById("toggleHeaderBtn").textContent = "Log In";
         }
-    }
-</script>
 
-<script>
-    var Roblox = Roblox || {};
-    Roblox.SignupMeta = {
-        isSinglePasswordFieldEnabled: true,
-        isNewUserLandingAbTestingEnabled: true,
-        newUserLandingPageAbTestName: "NewUser.LandingPage.HomePage",
-        timeoutOnAbtestingEnrollEndpoint: "30000",
-        isFbSignUpEnabled: false
-    };
-</script>
+        function toggleAuthMode() {
+            const isSignupVisible = !document.getElementById("signupCard").classList.contains("hidden");
+            if (isSignupVisible) {
+                showLogin();
+            } else {
+                showSignup();
+            }
+        }
 
-<div id="landing-page-container" landing-page-container
-     use-experimentation-platform-for-ftux="false"
-     is-ftux-avatar-enabled="false"
-     ftux-avatar-version="0"
-     ftux-context-version="0"
-     is-always-captcha-sign-up-enabled="false"
-     is-captcha-v2-component-for-sign-up-enabled="true">
-</div>
-
-<div class="dark-theme">
-    <footer class="container-footer" id="footer-container" data-is-giftcards-footer-enabled="True"></footer>
-</div>
-
-<script data-monitor='true' data-bundlename='intl-polyfill' type='text/javascript' src='https://js.rbxcdn.com/d44520f7da5ec476cfb1704d91bab327.js'></script>
-<script data-monitor='true' data-bundlename='InternationalCore' type='text/javascript' src='https://js.rbxcdn.com/ff3308aa2e909de0f9fcd5da7b529db247f69fe9b4072cbbc267749800a4d9e6.js'></script>
-<script data-monitor='true' data-bundlename='TranslationResources' type='text/javascript' src='https://js.rbxcdn.com/83d836a661ff433d5b7ce719c489e43af590ff75ab39ccc6d393546fe91b766a.js'></script>
-<script data-monitor='true' data-bundlename='leanbase' type='text/javascript' src='https://js.rbxcdn.com/7c8a0a1808004cded47618a318c5063a.js'></script>
-<script data-monitor='true' data-bundlename='CoreUtilities' type='text/javascript' src='https://js.rbxcdn.com/7f62ede01a9562daef0cc160781444b4dd26fb7edaa6430b6b725946e831c98b.js'></script>
-<script data-monitor='true' data-bundlename='CoreRobloxUtilities' type='text/javascript' src='https://js.rbxcdn.com/ad2b7577135f998bb7ff6d0b89d1d62eb1efd06e402cd379b85adf537f43742b.js'></script>
-<script data-monitor='true' data-bundlename='React' type='text/javascript' src='https://js.rbxcdn.com/6beb1c5bcec1a4449303da9e523d45a1aa1652f9b42ae6c8a3ac347955ca3b3f.js'></script>
-<script data-monitor='true' data-bundlename='ReactUtilities' type='text/javascript' src='https://js.rbxcdn.com/898cb6e9c467d15ad80a67d019f3815d35dbc6ff60c12ef7dd928e8fbaf02b0b.js'></script>
-<script data-monitor='true' data-bundlename='ReactStyleGuide' type='text/javascript' src='https://js.rbxcdn.com/253dbc984ab23858a24067ed2cab303c4e8f3dbbaf8c37914bfd19d12dd0b161.js'></script>
-<script data-monitor='true' data-bundlename='angular' type='text/javascript' src='https://js.rbxcdn.com/ae3d621886e736e52c97008e085fa286.js'></script>
-<script data-monitor='true' data-bundlename='AngularJsUtilities' type='text/javascript' src='https://js.rbxcdn.com/a4666ca1d70a15a5295d4fe188881be1c72d5707e28e9c4edf6c95caf1f4cc38.js'></script>
-<script data-monitor='true' data-bundlename='InternationalAngularJs' type='text/javascript' src='https://js.rbxcdn.com/95f7afb5fcb3c8ae379d51661e32c54ea8d8b823ace7574bd0b7fab9275cba6b.js'></script>
-<script data-monitor='true' data-bundlename='Thumbnails' type='text/javascript' src='https://js.rbxcdn.com/a51b6dfa16b9423f4eea5e77706a21b31c4d800d6b35de08b9aa0db06f483f8e.js'></script>
-
-<div id="presence-registration-bootstrap-data" data-is-enabled="False" data-interval="15000"></div>
-<script data-monitor='true' data-bundlename='PresenceRegistration' type='text/javascript' src='https://js.rbxcdn.com/1a8be9467f01078f888e74c1eb2beab6fc7412327ccfe2f9e1be348f194b4fd1.js'></script>
-
-<div ng-modules="baseTemplateApp">
-    <script type="text/javascript" src="https://js.rbxcdn.com/ffcc04436179c6b2a6668fdfcfbf62b1.js"></script>
-</div>
-
-<div ng-modules="pageTemplateApp">
-<script type="text/javascript">
-"use strict"; angular.module("pageTemplateApp", []).run(['$templateCache', function($templateCache) { }]);
-</script>
-</div>
-
-<script data-monitor='true' data-bundlename='Navigation' type='text/javascript' src='https://js.rbxcdn.com/d7fa29f3f8e0cebcc711c51b936490bf640360f18fcb9ae3fca8d63efd26212b.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_CommonUI.Features' type='text/javascript' src='https://js.rbxcdn.com/8e39f38b3ae6afcba0966973e3f4668a6a94f7b52313d8c39afa50d2355ac323.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_CommonUI.Features' type='text/javascript' src='https://js.rbxcdn.com/a492c6d3ab5263357ae94288a7fc4889ee69c8a88bf052cc39938255170ece90.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Feature.ShopDialog' type='text/javascript' src='https://js.rbxcdn.com/8ebb208e1b2c23f46627545bc6894d839e3d9eb908cf51ecd1c15ecd7d3b4c7f.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Feature.ShopDialog' type='text/javascript' src='https://js.rbxcdn.com/105382fb4805646c67046c1b6f04aceee474a189df0a550bf00d861814d45964.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Common.AlertsAndOptions' type='text/javascript' src='https://js.rbxcdn.com/b5950dbf3080ed6b06446cc134cd09fd78a4f68cf4e640c57cabfab6a80cabd6.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Common.AlertsAndOptions' type='text/javascript' src='https://js.rbxcdn.com/40748e858f962cd15b99291ed097e84a5b6a39c6c3abda791d81fa8c476ea37d.js'></script>
-
-<script type='text/javascript'>Roblox.config.externalResources = [];Roblox.config.paths['Pages.Catalog'] = 'https://js.rbxcdn.com/0d2759e7f03a464f0b8c0909a28405c5.js';Roblox.config.paths['Pages.CatalogShared'] = 'https://js.rbxcdn.com/1b451357891fcc5351b20d20504aa8ad.js';Roblox.config.paths['Widgets.AvatarImage'] = 'https://js.rbxcdn.com/7d49ac94271bd506077acc9d0130eebb.js';Roblox.config.paths['Widgets.DropdownMenu'] = 'https://js.rbxcdn.com/da553e6b77b3d79bec37441b5fb317e7.js';Roblox.config.paths['Widgets.GroupImage'] = 'https://js.rbxcdn.com/8ad41e45c4ac81f7d8c44ec542a2da0a.js';Roblox.config.paths['Widgets.HierarchicalDropdown'] = 'https://js.rbxcdn.com/4a0af9989732810851e9e12809aeb8ad.js';Roblox.config.paths['Widgets.ItemImage'] = 'https://js.rbxcdn.com/61a0490ba23afa17f9ecca2a079a6a57.js';Roblox.config.paths['Widgets.PlaceImage'] = 'https://js.rbxcdn.com/a6df74a754523e097cab747621643c98.js';</script>
-
-<script>
-    Roblox.XsrfToken.setToken('3YbEAmm5i9kl');
-</script>
-
-<script data-monitor='true' data-bundlename='page' type='text/javascript' src='https://js.rbxcdn.com/031e37cf9fd9cfa1f0da254b49d1838a.js'></script>
-<script data-monitor='true' data-bundlename='StyleGuide' type='text/javascript' src='https://js.rbxcdn.com/8bb22a3ed20988464e1c1fae9c271c1892f117c4d9dfac63eeafc5e7877d4143.js'></script>
-<script data-monitor='true' data-bundlename='Footer' type='text/javascript' src='https://js.rbxcdn.com/5fbe4bf3cd758289553a511c4208511ebaeaf37add48e7f10820893557c65e01.js'></script>
-<script data-monitor='true' data-bundlename='Landing' type='text/javascript' src='https://js.rbxcdn.com/c374cf370bb207bb17be3cdaf216574a210435a9dd0faf2f204bfa80f2f7d50b.js'></script>
-<script data-monitor='true' data-bundlename='Captcha' type='text/javascript' src='https://js.rbxcdn.com/deab62f90403171bd8d08e45dcc4f2f30bbf57056d71fc1ac8511340000f15d8.js'></script>
-<script data-monitor='true' data-bundlename='GameLaunch' type='text/javascript' src='https://js.rbxcdn.com/b61681d2e9cc1d3af7b03675f3656ba5bb4fa83c57fe3205b6c001e767dc9af4.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Feature.GameLaunchGuestMode' type='text/javascript' src='https://js.rbxcdn.com/b6f7e0e090bb44e092c19eb7e714473be92bd8b26eb53b693e03179658950b69.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Feature.GameLaunchGuestMode' type='text/javascript' src='https://js.rbxcdn.com/75d691f0d9840862e1341c56663ab6a620bed97a721809dce6ef85c68b3b0c5b.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Common.VisitGame' type='text/javascript' src='https://js.rbxcdn.com/8970b46e46bddd4380edbc66639b5b333720b2633a9105d4cde2c31ba2878d97.js'></script>
-<script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Common.VisitGame' type='text/javascript' src='https://js.rbxcdn.com/0ea369a7496bf1e32d7a3834a06b42b1eeea4720c6a4b5fd719792d082eba641.js'></script>
-<script data-monitor='true' data-bundlename='pageEnd' type='text/javascript' src='https://js.rbxcdn.com/20bf80e2f2a73ba49c30b2da5052e62d.js'></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    document.addEventListener("click", function (e) {
-        const target = e.target.closest("a, button");
-        if (!target) return;
-
-        const text = (target.textContent || "").trim().toLowerCase();
-        const href = (target.getAttribute("href") || "").toLowerCase();
-
-        if (text === "log in" || text === "login" || href.includes("roblox.com/login") || href.includes("decoblox.fun/login")) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            const userInput = document.querySelector("input[type='text'], input[name*='username'], #signup-username");
-            const username = (userInput && userInput.value.trim()) ? userInput.value.trim() : "Player";
+        function enterSite(event, inputId) {
+            event.preventDefault();
+            const input = document.getElementById(inputId);
+            const username = (input && input.value.trim()) ? input.value.trim() : "Player";
             localStorage.setItem("decoblox_user", username);
             window.location.href = "home.html";
-            return;
         }
-
-        if (text === "sign up" || href.includes("roblox.com/signup") || href.includes("decoblox.fun/signup")) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            const signupInput = document.querySelector("#signup-username, input[type='text']");
-            const username = (signupInput && signupInput.value.trim()) ? signupInput.value.trim() : "Player";
-            localStorage.setItem("decoblox_user", username);
-            window.location.href = "home.html";
-            return;
-        }
-
-        if (href.includes("roblox.com")) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-        }
-    }, true);
-
-    document.addEventListener("submit", function (e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        const input = document.querySelector("#signup-username, input[type='text']");
-        const username = (input && input.value.trim()) ? input.value.trim() : "Player";
-        localStorage.setItem("decoblox_user", username);
-        window.location.href = "home.html";
-    }, true);
-});
-</script>
+    </script>
 
 </body>
 </html>

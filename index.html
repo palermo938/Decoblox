@@ -95,7 +95,6 @@
 <link rel='stylesheet' data-bundlename='Captcha' href='https://css.rbxcdn.com/24a76e8ea70afb9462fad013faa3d22ff3e832e8327ddd764dafe328918bed90.css' />
 <link rel='stylesheet' data-bundlename='RobuxIcon' href='https://css.rbxcdn.com/2f599b9e9ca20ee3c155684adbf1cdcb7220bab681b55b4505123a0c34e81969.css' />
 
-<!-- SOVRASCRITTURA LOGO DECOBLOX AL POSTO DELLO SPRITE RBXCDN -->
 <style>
     .icon-logo,
     .roblox-logo,
@@ -107,7 +106,6 @@
         width: 165px !important;
         height: 36px !important;
         display: inline-block !important;
-        /* Rende bianco il logo nero trasparente per renderlo leggibile sullo sfondo scuro */
         filter: brightness(0) invert(1) !important;
     }
 
@@ -126,29 +124,8 @@
 
 <script type="text/javascript">
     var Roblox = Roblox || {};
-    Roblox.EnvironmentUrls = {
-        "domain": "decoblox.fun",
-        "websiteUrl": "https://decoblox.fun",
-        "authApi": "https://decoblox.fun",
-        "authAppSite": "https://decoblox.fun",
-        "apiProxyUrl": "https://decoblox.fun",
-        "apiGatewayUrl": "https://decoblox.fun",
-        "gamesApi": "https://decoblox.fun",
-        "usersApi": "https://decoblox.fun",
-        "avatarApi": "https://decoblox.fun",
-        "thumbnailsApi": "https://decoblox.fun",
-        "presenceApi": "https://decoblox.fun",
-        "chatApi": "https://decoblox.fun",
-        "friendsApi": "https://decoblox.fun",
-        "catalogApi": "https://decoblox.fun",
-        "economyApi": "https://decoblox.fun",
-        "groupsApi": "https://decoblox.fun",
-        "inventoryApi": "https://decoblox.fun",
-        "notificationApi": "https://decoblox.fun",
-        "premiumFeaturesApi": "https://decoblox.fun",
-        "metricsApi": "https://decoblox.fun",
-        "captchaApi": "https://decoblox.fun"
-    };
+    Roblox.EnvironmentUrls = Roblox.EnvironmentUrls || {};
+    Roblox.EnvironmentUrls = {"abtestingApiSite":"https://decoblox.fun","accountInformationApi":"https://decoblox.fun","accountSettingsApi":"https://decoblox.fun","adConfigurationApi":"https://decoblox.fun","adsApi":"https://decoblox.fun","apiGatewayUrl":"https://decoblox.fun","apiProxyUrl":"https://decoblox.fun","assetDeliveryApi":"https://decoblox.fun","authApi":"https://decoblox.fun","authAppSite":"https://decoblox.fun","avatarApi":"https://decoblox.fun","badgesApi":"https://decoblox.fun","billingApi":"https://decoblox.fun","captchaApi":"https://decoblox.fun","catalogApi":"https://decoblox.fun","chatApi":"https://decoblox.fun","contactsApi":"https://decoblox.fun","contentStoreApi":"https://decoblox.fun","developApi":"https://decoblox.fun","domain":"decoblox.fun","economyApi":"https://decoblox.fun","economycreatorstatsApi":"https://decoblox.fun","engagementPayoutsApi":"https://decoblox.fun","followingsApi":"https://decoblox.fun","friendsApi":"https://decoblox.fun","friendsAppSite":"https://decoblox.fun","gamesApi":"https://decoblox.fun","gameInternationalizationApi":"https://decoblox.fun","groupsApi":"https://decoblox.fun","inventoryApi":"https://decoblox.fun","itemConfigurationApi":"https://decoblox.fun","localeApi":"https://decoblox.fun","localizationTablesApi":"https://decoblox.fun","metricsApi":"https://decoblox.fun","midasApi":"https://decoblox.fun","notificationApi":"https://decoblox.fun","premiumFeaturesApi":"https://decoblox.fun","presenceApi":"https://decoblox.fun","publishApi":"https://decoblox.fun","screenTimeApi":"https://decoblox.fun","thumbnailsApi":"https://decoblox.fun","tradesApi":"https://decoblox.fun","translationRolesApi":"https://decoblox.fun","universalAppConfigurationApi":"https://decoblox.fun","usersApi":"https://decoblox.fun","voiceApi":"https://decoblox.fun","websiteUrl":"https://decoblox.fun","privateMessagesApi":"https://decoblox.fun","shareApi":"https://decoblox.fun","chatModerationApi":"https://decoblox.fun","userModerationApi":"https://decoblox.fun","groupsModerationApi":"https://decoblox.fun","twoStepVerificationApi":"https://decoblox.fun"};
 </script>
 
 <script type="text/javascript">
@@ -193,6 +170,26 @@ Roblox.Endpoints.addCrossDomainOptionsToAllRequests = false;
 <div id="image-retry-data" data-image-retry-max-times="5" data-image-retry-timer="500" data-ga-logging-percent="0"></div>
 <div id="http-retry-data" data-http-retry-max-timeout="0" data-http-retry-base-timeout="0" data-http-retry-max-times="1"></div>
 
+<script type="text/javascript">
+    var Roblox = Roblox || {};
+    $(function () {
+        var funCaptcha = Roblox.FunCaptcha;
+        if (funCaptcha) {
+            var captchaTypes = [{"Type":"Signup","PublicKey":"A2A14B1D-1AF3-C791-9BBC-EE33CC7A0A6F","ApiUrl":"https://captcha.roblox.com/v1/funcaptcha/signup"},{"Type":"Login","PublicKey":"9F35E182-C93C-EBCC-A31D-CF8ED317B996","ApiUrl":"https://captcha.roblox.com/v1/funcaptcha/login/web"}];
+            funCaptcha.addCaptchaTypes(captchaTypes, true);
+            funCaptcha.setMaxRetriesOnTokenValidationFailure(0);
+            funCaptcha.setPerAppTypeLoggingEnabled(false);
+            funCaptcha.setRetryIntervalRange(500, 1500);
+        }
+    });
+
+    function reportFunCaptchaLoaded() {
+        if (Roblox.BundleDetector) {
+            Roblox.BundleDetector.reportResourceLoaded("funcaptcha");
+        }
+    }
+</script>
+
 <script>
     var Roblox = Roblox || {};
     Roblox.SignupMeta = {
@@ -210,11 +207,11 @@ Roblox.Endpoints.addCrossDomainOptionsToAllRequests = false;
      ftux-avatar-version="0"
      ftux-context-version="0"
      is-always-captcha-sign-up-enabled="false"
-     is-captcha-v2-component-for-sign-up-enabled="false">
+     is-captcha-v2-component-for-sign-up-enabled="true">
 </div>
 
 <div class="dark-theme">
-    <footer class="container-footer" id="footer-container" data-is-giftcards-footer-enabled="False"></footer>
+    <footer class="container-footer" id="footer-container" data-is-giftcards-footer-enabled="True"></footer>
 </div>
 
 <script data-monitor='true' data-bundlename='intl-polyfill' type='text/javascript' src='https://js.rbxcdn.com/d44520f7da5ec476cfb1704d91bab327.js'></script>
@@ -270,10 +267,8 @@ Roblox.Endpoints.addCrossDomainOptionsToAllRequests = false;
 <script data-monitor='true' data-bundlename='DynamicLocalizationResourceScript_Common.VisitGame' type='text/javascript' src='https://js.rbxcdn.com/0ea369a7496bf1e32d7a3834a06b42b1eeea4720c6a4b5fd719792d082eba641.js'></script>
 <script data-monitor='true' data-bundlename='pageEnd' type='text/javascript' src='https://js.rbxcdn.com/20bf80e2f2a73ba49c30b2da5052e62d.js'></script>
 
-<!-- BLOCCO REINDIRIZZAMENTI ROBLOX E GESTIONE LOGIN/SIGNUP LOCALE -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    // Intercetta tutti i clic su link o pulsanti che puntano a roblox.com
     document.addEventListener("click", function (e) {
         const target = e.target.closest("a, button");
         if (!target) return;
@@ -281,8 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const text = (target.textContent || "").trim().toLowerCase();
         const href = (target.getAttribute("href") || "").toLowerCase();
 
-        // Se clicca Log In
-        if (text === "log in" || text === "login" || href.includes("roblox.com/login")) {
+        if (text === "log in" || text === "login" || href.includes("roblox.com/login") || href.includes("decoblox.fun/login")) {
             e.preventDefault();
             e.stopImmediatePropagation();
             const userInput = document.querySelector("input[type='text'], input[name*='username'], #signup-username");
@@ -292,8 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Se clicca Sign Up
-        if (text === "sign up" || href.includes("roblox.com/signup")) {
+        if (text === "sign up" || href.includes("roblox.com/signup") || href.includes("decoblox.fun/signup")) {
             e.preventDefault();
             e.stopImmediatePropagation();
             const signupInput = document.querySelector("#signup-username, input[type='text']");
@@ -303,14 +296,12 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Blocca qualsiasi altro link esterno verso roblox.com
         if (href.includes("roblox.com")) {
             e.preventDefault();
             e.stopImmediatePropagation();
         }
     }, true);
 
-    // Intercetta invio dei form (Sign Up / Login)
     document.addEventListener("submit", function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
